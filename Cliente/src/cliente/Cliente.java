@@ -25,7 +25,7 @@ public class Cliente
         
         try
         {
-            socket = new Socket("teste123321.ddns.net", 8085);
+            socket = new Socket("127.0.0.1", 6669);
             ps = new PrintStream(socket.getOutputStream());
             ps.println("Enviei mai uma linhazinha hehehe");
         } catch (Exception e)
