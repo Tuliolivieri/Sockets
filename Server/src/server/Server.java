@@ -5,55 +5,44 @@
  */
 package server;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.ServerSocket;
-import java.net.Socket;
+import javafx.application.Application;
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  *
  * @author tulio
  */
-public class Server
+public class Server extends Application
 {
+    private static double xOffset = 0; private static double yOffset = 0;
+    @Override
+    public void start(Stage stage) throws Exception
+    {
+        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        
+        Scene scene = new Scene(root, Color.TRANSPARENT);
+        stage.initStyle(StageStyle.TRANSPARENT);
+        
+        scene.setOnMousePressed(new EventHandler<MouseEvent>() { @Override public void handle(MouseEvent event) { xOffset = stage.getX() - event.getScreenX(); yOffset = stage.getY() - event.getScreenY(); } });
+        scene.setOnMouseDragged(new EventHandler<MouseEvent>() { @Override public void handle(MouseEvent event) { stage.setX(event.getScreenX() + xOffset); stage.setY(event.getScreenY() + yOffset); } });
+        
+        stage.setScene(scene);
+        stage.show();
+    }
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args)
     {
-        ServerSocket server = null;
-        Socket socket = null;
-        BufferedReader input = null;
-        
-        try
-        {
-            /// CRIANDO O SERVER NA PORTA 6669 SE ESSA ESTIVER DISPONÍVEL
-            server = new ServerSocket(6669);
-            
-            /// AGUARDA A CONEXÃO NA PORTA E RETORNA O SOCKET ONDE SERÁ FEITA A CONEXÃO
-            socket = server.accept();
-            
-            /// CRIA O BUFERREDREADER DO CANAL DE ENTRADA DO SOCKET
-            input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            
-            System.out.println(input.readLine());
-        } catch (Exception e)
-        {
-            System.out.println("Erro: " + e.getMessage());
-        }finally
-        {
-            try
-            {
-                /// ENCERRANDO SOCKET E SERVIDOR
-                socket.close();
-                server.close();
-            } catch (Exception e)
-            {
-                System.out.println("Erro: " + e.getMessage());
-            }
-        }
-        
+        launch(args);
     }
     
 }

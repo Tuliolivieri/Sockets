@@ -5,42 +5,36 @@
  */
 package cliente;
 
-import java.io.PrintStream;
-import java.net.Socket;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 /**
  *
  * @author tulio
  */
-public class Cliente
+public class Cliente extends Application
 {
+    
+    @Override
+    public void start(Stage stage) throws Exception
+    {
+        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        
+        Scene scene = new Scene(root);
+        
+        stage.setScene(scene);
+        stage.show();
+    }
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args)
     {
-        Socket socket = null;
-        PrintStream ps= null;
-        
-        try
-        {
-            socket = new Socket("127.0.0.1", 6669);
-            ps = new PrintStream(socket.getOutputStream());
-            ps.println("Enviei mai uma linhazinha hehehe");
-        } catch (Exception e)
-        {
-            System.out.println("Erro: " + e.getMessage());
-        }finally
-        {
-            try
-            {
-                socket.close();
-            } catch (Exception e)
-            {
-                System.out.println("Erro: " + e.getMessage());
-            }
-        }
+        launch(args);
     }
     
 }
