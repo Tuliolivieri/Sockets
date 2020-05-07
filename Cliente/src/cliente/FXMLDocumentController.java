@@ -20,32 +20,32 @@ import javafx.scene.control.Label;
  */
 public class FXMLDocumentController implements Initializable
 {
-    
+
     @FXML
     private Label label;
-    
+
     @FXML
     private void handleButtonAction(ActionEvent event)
     {
         System.out.println("You clicked me!");
         label.setText("Hello World!");
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
         Socket socket = null;
-        PrintStream ps= null;
-        
+        PrintStream ps = null;
+
         try
         {
             socket = new Socket("127.0.0.1", 6669);
             ps = new PrintStream(socket.getOutputStream());
-            ps.println("Enviei mai uma linhazinha hehehe");
+            ps.println("#@CONNECT#IPCLIENT=111.222.333.0#NOME=Tirulipa#PORTA=7000");
         } catch (Exception e)
         {
             System.out.println("Erro: " + e.getMessage());
-        }finally
+        } finally
         {
             try
             {
@@ -55,6 +55,6 @@ public class FXMLDocumentController implements Initializable
                 System.out.println("Erro: " + e.getMessage());
             }
         }
-    }    
-    
+    }
+
 }
