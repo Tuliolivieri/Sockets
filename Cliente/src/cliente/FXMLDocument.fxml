@@ -1,14 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cliente.FXMLDocumentController">
-    <children>
-        <Button layoutX="126" layoutY="90" text="Click Me!" onAction="#handleButtonAction" fx:id="button" />
-        <Label layoutX="126" layoutY="120" minHeight="16" minWidth="69" fx:id="label" />
-    </children>
-</AnchorPane>
+<BorderPane fx:id="borderPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cliente.FXMLDocumentController">
+   <top>
+      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="900.0" style="-fx-border-color: black; -fx-background-color: #DDDDDD;" BorderPane.alignment="CENTER">
+         <children>
+            <JFXTextField fx:id="tfUser" editable="false" labelFloat="true" layoutX="14.0" layoutY="63.0" promptText="Usuário:" text="Anon" />
+            <JFXTextField fx:id="tfTime" editable="false" labelFloat="true" layoutX="686.0" layoutY="63.0" prefHeight="25.0" prefWidth="200.0" promptText="Time:" />
+            <JFXTextField fx:id="tfIPorta" editable="false" labelFloat="true" layoutX="166.0" layoutY="63.0" promptText="IP/Porta:" />
+            <AnchorPane prefHeight="41.0" prefWidth="900.0" style="-fx-background-color: #BBB; -fx-border-color: black;">
+               <children>
+                  <JFXButton fx:id="btMinMax" buttonType="RAISED" layoutX="841.0" layoutY="7.0" onAction="#clkMinMax" style="-fx-background-color: #888888; -fx-background-radius: 100;" text="▒" textFill="#f2f2f2" />
+                  <JFXButton fx:id="btClose" buttonType="RAISED" layoutX="871.0" layoutY="7.0" onAction="#clkClose" style="-fx-background-color: red; -fx-background-radius: 100;" text="X" textFill="#ebebeb">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <Label layoutX="381.0" layoutY="11.0" text="Cliente Pê Dois Pê">
+                     <font>
+                        <Font name="Eras Demi ITC" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <AnchorPane prefHeight="491.0" prefWidth="901.0" style="-fx-border-color: black; -fx-background-color: #AAAAFF;" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane layoutX="268.0" layoutY="93.0" prefHeight="314.0" prefWidth="365.0" style="-fx-background-color: #DDD; -fx-background-radius: 15px; -fx-border-color: purple; -fx-border-radius: 15px;">
+               <children>
+                  <JFXTextField fx:id="tfNome" labelFloat="true" layoutX="115.0" layoutY="29.0" promptText="Nome" />
+                  <JFXTextField fx:id="tfIP" labelFloat="true" layoutX="115.0" layoutY="81.0" promptText="IP" />
+                  <JFXTextField fx:id="tfPorta" labelFloat="true" layoutX="115.0" layoutY="134.0" prefHeight="4.0" prefWidth="135.0" promptText="Porta" />
+                  <JFXButton fx:id="btConectar" defaultButton="true" layoutX="115.0" layoutY="189.0" onAction="#clkConectar" prefHeight="25.0" prefWidth="135.0" style="-fx-border-color: purple; -fx-border-radius: 5px;" text="Conectar">
+                     <font>
+                        <Font name="Eras Demi ITC" size="14.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+         </children></AnchorPane>
+   </center>
+</BorderPane>
