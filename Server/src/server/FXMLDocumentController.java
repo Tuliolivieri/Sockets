@@ -140,7 +140,7 @@ public class FXMLDocumentController implements Initializable
         String[] nc = s.split("#");
 
         Users newUser = new Users(nc[2].replace("IPCLIENT=", ""), Integer.parseInt(nc[4].replace("PORTA=", "")), nc[3].replace("NOME=", ""));
-
+        taMensagens.appendText("O famigerado " + newUser.getNome() + " entrou...cuidado...\n");
         usuarios.add(newUser);
 
         tbClientes.getItems().add(newUser);
