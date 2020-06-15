@@ -11,14 +11,11 @@ import java.io.PrintStream;
 import java.net.Socket;
 import java.net.URL;
 import java.time.LocalDate;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -57,9 +54,6 @@ public class FXMLDocumentController implements Initializable
     {
         LocalDate data = LocalDate.now();
         tfTime.setText(data.getDayOfWeek() + ", " + data.getMonth() + " " + data.getDayOfMonth() + ", " + data.getYear());
-        
-        
-        
     }
 
     @FXML
